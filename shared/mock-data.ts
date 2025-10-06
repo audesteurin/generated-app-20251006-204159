@@ -1,15 +1,40 @@
-import type { Product, Category, User, Client, Sale, SaleItem, Supplier, SupplierOrder, SupplierOrderItem, Transaction, TransactionCategory } from './types';
-export const MOCK_USER: User = {
-  id: 'user-1',
-  firstName: 'Admin',
-  lastName: 'User',
-  email: 'admin@nexus.com',
-  passwordHash: '',
-  roleId: 'role-1',
-  status: 'active',
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
-};
+import type { Product, Category, User, Client, Sale, SaleItem, Supplier, SupplierOrder, SupplierOrderItem, Transaction, TransactionCategory, Role, Permission, ProductMovement } from './types';
+export const MOCK_ROLES: Role[] = [
+  { id: 'role-1', name: 'Administrateur', description: 'Accès complet à toutes les fonctionnalités', createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() },
+  { id: 'role-2', name: 'Gestionnaire de Ventes', description: 'Gère les produits, les ventes et les clients', createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() },
+];
+export const MOCK_USERS: User[] = [
+  {
+    id: 'user-1',
+    firstName: 'Admin',
+    lastName: 'User',
+    email: 'admin@nexus.com',
+    passwordHash: 'hashed_password', // Ne sera pas utilisé côté client
+    roleId: 'role-1',
+    status: 'active',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: 'user-2',
+    firstName: 'Vendeur',
+    lastName: 'Test',
+    email: 'seller@nexus.com',
+    passwordHash: 'hashed_password',
+    roleId: 'role-2',
+    status: 'active',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  }
+];
+export const MOCK_PERMISSIONS: Permission[] = [
+  // Admin permissions
+  { id: 'perm-1', roleId: 'role-1', module: 'products', canCreate: true, canRead: true, canUpdate: true, canDelete: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() },
+  { id: 'perm-2', roleId: 'role-1', module: 'sales', canCreate: true, canRead: true, canUpdate: true, canDelete: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() },
+  // Sales Manager permissions
+  { id: 'perm-3', roleId: 'role-2', module: 'products', canCreate: true, canRead: true, canUpdate: true, canDelete: false, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() },
+  { id: 'perm-4', roleId: 'role-2', module: 'sales', canCreate: true, canRead: true, canUpdate: false, canDelete: false, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() },
+];
 export const MOCK_CATEGORIES: Category[] = [
   { id: 'cat-1', name: 'Électronique', createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() },
   { id: 'cat-2', name: 'Vêtements', createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() },
@@ -47,6 +72,10 @@ export const MOCK_PRODUCTS: Product[] = [
     createdBy: 'user-1',
     updatedBy: 'user-1',
   },
+];
+export const MOCK_PRODUCT_MOVEMENTS: ProductMovement[] = [
+  { id: 'move-1', productId: 'prod-1', type: 'in', quantity: 200, reason: 'Stock initial', date: new Date().toISOString(), userId: 'user-1', createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() },
+  { id: 'move-2', productId: 'prod-1', type: 'out', quantity: 50, reason: 'Vente #VTE-2024-001', date: new Date().toISOString(), userId: 'user-1', createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() },
 ];
 export const MOCK_CLIENTS: Client[] = [
     {

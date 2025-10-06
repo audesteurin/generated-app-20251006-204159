@@ -2,7 +2,7 @@
 
 An all-in-one, serverless ERP for managing products, sales, customers, and finances for modern e-commerce businesses.
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/audesteurin/generated-app-20251006-204129)
 
 Nexus Commerce is a comprehensive, all-in-one web application designed for the complete management of an online store. It serves as a central hub (ERP/CRM) for e-commerce operations, providing a suite of powerful tools within a single, intuitive interface. The application is built on a modern, serverless architecture using Cloudflare Workers, ensuring high performance and scalability.
 
@@ -115,7 +115,7 @@ This command will deploy your Hono backend to Cloudflare Workers and your static
 
 Alternatively, you can deploy directly from your GitHub repository with a single click:
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/audesteurin/generated-app-20251006-204129)
 
 ## Contributing
 
